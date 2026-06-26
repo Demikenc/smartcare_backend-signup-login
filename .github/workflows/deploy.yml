@@ -45,8 +45,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Change this to match where your app should live:
           #   Root domain (od2mk.com)         → public_html/
-          #   Subdomain (portal.od2mk.com)    → portal.od2mk.com/  (or whatever cPanel created)
-          server-dir: ./public_html/
+          #   Subdomain (smartcare.od2mk.com)    → smartcare.od2mk.com/  (or whatever cPanel created)
+          server-dir: ./smartcare.od2mk.com/
           local-dir: ./dist/
           # Never wipe .htaccess or other server-side files that
           # aren't part of this build — only sync what changed.
