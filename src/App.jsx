@@ -1460,7 +1460,7 @@ function PaymentLockScreen({ user, onLogout, onPaymentInitiated, paymentPending 
           <div className="w-9 h-9 rounded-lg bg-[#E8500A] flex items-center justify-center">
             <Building2 className="w-5 h-5 text-white" />
           </div>
-          <span className="text-white font-semibold text-lg tracking-tight">OD2MK <span className="text-[#E8500A]">KB Portal</span></span>
+          <span className="text-white font-semibold text-lg tracking-tight">OD2MK <span className="text-[#E8500A]">Agent Portal</span></span>
         </div>
 
         <div className="text-center mb-8">
