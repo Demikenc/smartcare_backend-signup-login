@@ -242,7 +242,7 @@ function LoginScreen({ onLogin }) {
           )}
         </div>
 
-        <p className="text-[#555] text-xs text-center mt-6">Each client account is isolated by Row Level Security.<br/>You will only ever see your own data.</p>
+        <p className="text-[#555] text-xs text-center mt-6">Your account is secured and can only be accessed via the link sent.<br/>your updates will only be used by your agent to engage clients.</p>
       </div>
     </div>
   );
