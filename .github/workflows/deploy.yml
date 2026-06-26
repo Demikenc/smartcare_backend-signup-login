@@ -46,7 +46,7 @@ jobs:
           # Change this to match where your app should live:
           #   Root domain (od2mk.com)         → public_html/
           #   Subdomain (smartcare.od2mk.com)    → smartcare.od2mk.com/  (or whatever cPanel created)
-          server-dir: ../smartcare.od2mk.com/
+          server-dir: 	/home/krpxifgb/smartcare.od2mk.com
           local-dir: ./dist/
           dangerous-clean-slate: true
           # Never wipe .htaccess or other server-side files that
