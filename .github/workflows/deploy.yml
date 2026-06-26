@@ -1,0 +1,55 @@
+name: Build and Deploy to Namecheap cPanel
+
+# Runs automatically every time you push to the main branch.
+# Builds the Vite/React app with production secrets injected at
+# build time, then uploads only the finished dist/ output to your
+# Namecheap Stellar cPanel via FTP.
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Production secrets are injected here, NOT committed to the repo.
+      # They are set once in GitHub → Settings → Secrets and variables →
+      # Actions, and GitHub passes them in as environment variables only
+      # during this build step. Vite reads them via import.meta.env at
+      # build time and bakes the resulting values into the static output.
+      - name: Build
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_PAYSTACK_PUBLIC_KEY: ${{ secrets.VITE_PAYSTACK_PUBLIC_KEY }}
+
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Change this to match where your app should live:
+          #   Root domain (od2mk.com)         → public_html/
+          #   Subdomain (portal.od2mk.com)    → portal.od2mk.com/  (or whatever cPanel created)
+          server-dir: ./public_html/
+          local-dir: ./dist/
+          # Never wipe .htaccess or other server-side files that
+          # aren't part of this build — only sync what changed.
+          exclude: |
+            **/.htaccess
+            **/.well-known/**
