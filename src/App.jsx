@@ -929,7 +929,7 @@ function Dashboard({ user, onLogout, onUserRefresh }) {
         {/* Isolation banner */}
         <div className="flex items-center gap-2 bg-[#15201A] border border-[#2A3F2A] rounded-lg px-4 py-2.5 mb-6">
           <CheckCircle2 className="w-4 h-4 text-[#4ADE80] flex-shrink-0" />
-          <p className="text-[#4ADE80] text-xs">You're viewing data scoped to <strong>{user.client_id}</strong> only. RLS guarantees no other client's data is reachable from this session.</p>
+          <p className="text-[#4ADE80] text-xs">You're viewing data from yur agent  to <strong>{user.client_id}</strong> only. you and your assigned staffs can access and update this page.</p>
         </div>
 
         {/* Tabs */}
