@@ -48,6 +48,7 @@ jobs:
           #   Subdomain (smartcare.od2mk.com)    → smartcare.od2mk.com/  (or whatever cPanel created)
           server-dir: smartcare.od2mk.com/
           local-dir: ./dist/
+          dangerous-clean-slate: true
           # Never wipe .htaccess or other server-side files that
           # aren't part of this build — only sync what changed.
           exclude: |
